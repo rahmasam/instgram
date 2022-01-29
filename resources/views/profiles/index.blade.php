@@ -4,7 +4,7 @@
 <div class="container" style="width: 50%;">
    <div class="row mb-2" style="background: rgb(255 255 255 / 54%);padding: 12px;border-radius: 5px;">
        <div class="col-sm-3 p-3">
-            <img src="{{ $user->profile->ProfileImage() }}" class="rounded-circle" width="70%" >
+            <img src="{{ url('/images/'.$user->profile->image) }}" class="rounded-circle" width="70%" >
        </div>
        <div class="col-sm-9">
            <div class="d-flex pb-2">

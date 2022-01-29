@@ -44,7 +44,7 @@ class ProfilesController extends Controller
         ]);
 
         # Fetch Raw Data ....
-        $rawData = Post::find($id);
+        $rawData = Profile::find($id);
 
 
        if(request()->hasFile('image')){
@@ -52,9 +52,9 @@ class ProfilesController extends Controller
           $FinalName = time().rand().'.'.$request->image->extension();
 
            if($request->image->move(public_path('images'),$FinalName)){
-
-                 unlink(public_path('images/'.$rawData->image));
-
+             //commit this because i have no image
+                // unlink(public_path('images/'.$rawData->image));
+                $data['image'] =  $FinalName;
               }else{
                   $FinalName = $rawData->image;
               }
@@ -65,9 +65,9 @@ class ProfilesController extends Controller
 
 
 
-       $data['image'] =  $FinalName;
+       //$data['image'] =  $FinalName;
 
-       $op = Post::where('id',$id)->update($data);
+       $op = Profile::where('id',$id)->update($data);
 
        if($op){
            $message = "Raw Updated";
